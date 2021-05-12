@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 1
+  gram: 1
+  roasting: MyString
+  sourness: 1
+  bitterness: 1
+  aroma: 1
+  body: 1
+  aftertaste: 1
+
+two:
+  name: MyString
+  description: MyText
+  price: 1
+  gram: 1
+  roasting: MyString
+  sourness: 1
+  bitterness: 1
+  aroma: 1
+  body: 1
+  aftertaste: 1
