@@ -15,19 +15,12 @@
     </tr>
     <% @items.each do |item| %>
      <tr> 
+         <td><%= image_tag item.image,class: "item-images" if item.image.attached? %></td>
          <td><%= item.itemname %></td>
          <td><%= item.description %></td>
          <td><%= item.price %>円</td>
          <td><%= item.gram %>g</td>
-         <td>
-             <% if item.roasting == 1 %>
-                 <%= "深煎り" %>
-             <% elsif item.roasting == 2 %>
-                 <%= "中煎り" %>
-             <% else %>
-                 <%= "浅煎り" %>
-             <% end %>
-         </td>
+         <td><%= item.roasting %></td>
          <td><%= item.bitterness %></td>
          <td><%= item.sourness %></td>
          <td><%= item.body %></td>
