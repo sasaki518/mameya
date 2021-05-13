@@ -1,32 +1,39 @@
+<%= render 'items/bar' %>
+
 <h1>商品一覧画面</h1>
+
+<div class="card">
+    <div class="card-body">
+        <%= form_with method: "get", local: true do |f| %>
+        <div class="form-row">
+            <div class="col">
+                <%= f.text_field "itemname", placeholder: "商品名を入力", class: "form-control" %>
+            </div>
+            <div class="col">
+                <%= f.submit "検索", class: "btn btn-primary" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
 <%= link_to "新規商品登録", new_item_path, class: "btn btn-success" %>
 <%= link_to "店舗情報", shops_path, class: "btn btn-dark" %>
 <table class="table">
     <tr>
+        <th>商品写真</th>
         <th>商品名</th>
-        <th>商品説明</th>
         <th>価格</th>
         <th>グラム数</th>
-        <th>焙煎度</th>
-        <th>苦味</th>
-        <th>香り</th>
-        <th>コク</th>
-        <th>後味</th>
     </tr>
     <% @items.each do |item| %>
      <tr> 
          <td><%= image_tag item.image,class: "item-images" if item.image.attached? %></td>
          <td><%= item.itemname %></td>
-         <td><%= item.description %></td>
          <td><%= item.price %>円</td>
          <td><%= item.gram %>g</td>
-         <td><%= item.roasting %></td>
-         <td><%= item.bitterness %></td>
-         <td><%= item.sourness %></td>
-         <td><%= item.body %></td>
-         <td><%= item.aftertaste %></td>
-         <td><%= link_to "商品情報編集", edit_item_path(item), class: "btn btn-warning" %></td>
-         <td><%= link_to "商品を削除", item_path(item), method: "delete", data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %></td>
+         <td><%= link_to "商品詳細", item_path(item), class: "btn btn-info" %></td>
+         <td><%= link_to "商品編集", edit_item_path(item), class: "btn btn-warning" %></td>
+         <td><%= link_to "商品削除", item_path(item), method: "delete", data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %></td>
          
     </tr>
         <% if item.roasting == 1 %>

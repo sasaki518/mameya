@@ -2,10 +2,9 @@ Rails.application.routes.draw do
    
   
   resources :items
+  resources :shops
    get "/homes", to: "homes#hogehoge1"
    get "/homes_for_shops", to: "homes#hogehoge2"
-    
-   get "/shops", to: "shops#index"
    
   
  

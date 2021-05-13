@@ -4,9 +4,11 @@ class ItemsController < ApplicationController
     
     def index
         @items = Item.all
+        @items = @items.where(itemname: params[:itemname]) if params[:itemname].present?
     end
     
     def show
+        @item = Item.find(params[:id])
     end
     
    def new
