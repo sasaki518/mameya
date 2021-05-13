@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
  protected
  
  def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:account_update, keys: [:shopname, :description, :address])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:shopname, :description, :address, :phonenumber])
+ end
+ 
+ def after_sign_out_path_for(resource)
+    homes_path # ログアウト後に遷移するpathを設定
  end
 end

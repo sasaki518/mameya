@@ -5,8 +5,9 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
          
-  validates :shopname, presence: true
-  validates :address, presence: true
+  validates :shopname, presence: true, length: { in: 1..20 }
+  validates :address, presence: true, length: { in: 10..50 }
+  validates :phonenumber, presence: true, length: { in: 5..15 }, numericality: { only_integer:true }
   validates :description, length: {maximum: 200 }
   
 end

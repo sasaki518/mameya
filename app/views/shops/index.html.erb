@@ -1,4 +1,4 @@
-<%= render 'items/bar' %>
+<%= render 'shops/bar' %>
 <h1>店舗情報</h1>
 
 <table class="table">
@@ -6,6 +6,7 @@
     <tr>
         <th>店舗名</th>
         <th>住所</th>
+        <th>電話番号</th>
         <th>店舗説明</th>
         <th></th>
     </tr>
@@ -14,6 +15,7 @@
         <% @shops.each do |shop| %>
         <td><%= shop.shopname  %></td>
         <td><%= shop.address %></td>
+        <td><%= shop.phonenumber %></td>
         <td><%= shop.description %></td>
         <% end %>
     </tr>
