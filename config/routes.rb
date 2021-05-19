@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
    
-  
+  root to: "homes#hogehoge1"
   resources :items
+  
   
    get "/homes", to: "homes#hogehoge1"
    get "/homes_for_shops", to: "homes#hogehoge2"
    
-   get "/shops", to: "shops#index"
- 
+   get "/myshop", to: "shops#show"
+    
+   get "/users", to: "users#index"
+   get "/users/hogehoge", to: "users#show"
+   
     devise_for :shops, controllers: {  registrations: 'shops/registrations', sessions: 'shops/sessions' }
     devise_for :users, controllers: { registraions: 'users/registrations', sessions: 'users/sessions' }
     devise_scope :user do

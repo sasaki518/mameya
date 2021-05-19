@@ -1,0 +1,57 @@
+<%= render 'users/bar' %>
+
+
+
+<div class="container show-top-container">
+    <div class="row row-1">
+        <div class="col-md-8 shop-show-img">
+            <%= image_tag @shop.shop_image, class: "shop-title-image" if @shop.shop_image.attached? %>
+            </div>
+        <div class="col-md-4 shop-show-col">
+            <h3><%= @shop.shopname %></h3>
+            <p><%= @shop.description %></p>
+        </div>
+    </div> 
+</div>
+
+<div class="card-group">
+      
+      <div class="card" style="width: 18rem;">
+        <%= image_tag @item.image, class: "show-item-img card-img-top" if @item.image.attached? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @item.itemname %></h5>
+        <p class="card-text"><%= @item.roasting %></p>
+        <p class="card-text"><%= @item.gram %>グラム</p>
+        <p class="card-text"><%= @item.price %>円</p>
+        <a href="#" class="btn btn-primary">詳細</a>
+        <a href="#" class="btn btn-success">カートに入れる</a>
+      </div>
+    </div>
+    
+    <div class="card" style="width: 18rem;">
+        <%= image_tag @item.image, class: "show-item-img card-img-top" if @item.image.attached? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @item.itemname %></h5>
+        <p class="card-text"><%= @item.roasting %></p>
+        <p class="card-text"><%= @item.gram %>グラム</p>
+        <p class="card-text"><%= @item.price %>円</p>
+        <a href="#" class="btn btn-primary">詳細</a>
+        <a href="#" class="btn btn-success">カートに入れる</a>
+      </div>
+    </div>
+    
+    <div class="card" style="width: 18rem;">
+        <%= image_tag @item.image, class: "show-item-img card-img-top" if @item.image.attached? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @item.itemname %></h5>
+        <p class="card-text"><%= @item.roasting %></p>
+        <p class="card-text"><%= @item.gram %>グラム</p>
+        <p class="card-text"><%= @item.price %>円</p>
+        <a href="#" class="btn btn-primary show-btn">詳細</a>
+        <a href="#" class="btn btn-success show-btn">カートに入れる</a>
+      </div>
+    </div>
+    
+
+
+</div>

@@ -4,20 +4,19 @@
 <table class="table">
     
     <tr>
+        <th>店舗写真</th>
         <th>店舗名</th>
         <th>住所</th>
         <th>電話番号</th>
         <th>店舗説明</th>
-        <th></th>
     </tr>
     
     <tr>
-        <% @shops.each do |shop| %>
-        <td><%= shop.shopname  %></td>
-        <td><%= shop.address %></td>
-        <td><%= shop.phonenumber %></td>
-        <td><%= shop.description %></td>
-        <% end %>
+         <td><%= image_tag current_shop.shop_image,class: "shop-images" if current_shop.shop_image.attached? %></td>
+        <td><%= current_shop.shopname  %></td>
+        <td><%= current_shop.address %></td>
+        <td><%= current_shop.phonenumber %></td>
+        <td><%= current_shop.description %></td>
     </tr>
     
 </table>

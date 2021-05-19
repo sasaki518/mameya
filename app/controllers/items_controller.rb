@@ -3,12 +3,11 @@ class ItemsController < ApplicationController
     before_action :set_item, only: [:show, :edit, :update, :destroy]
     
     def index
-        @items = Item.all
+        @items = Item.where(shop_id: session[:shop_id])
         @items = @items.where(itemname: params[:itemname]) if params[:itemname].present?
     end
     
     def show
-        @item = Item.find(params[:id])
     end
     
    def new
@@ -17,6 +16,7 @@ class ItemsController < ApplicationController
    
    def create
        item_params = params.require(:item).permit(:image, :itemname, :description, :price, :gram, :roasting, :sourness, :bitterness, :aroma, :body, :aftertaste)
+       item_params[:shop_id] = session[:shop_id]
        @item = Item.new(item_params)
        if @item.save
            flash[:notice] = "商品を一件登録しました。"
@@ -50,6 +50,6 @@ class ItemsController < ApplicationController
    private
    
    def set_item
-       @item = Item.find(params[:id])
+       @item = Item.where(shop_id: session[:shop_id]).find(params[:id])
    end
 end

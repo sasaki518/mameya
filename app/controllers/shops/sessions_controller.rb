@@ -26,7 +26,11 @@ class Shops::SessionsController < Devise::SessionsController
   # end
   
   def after_sign_out_path_for(resource)
-    shops_path
+    myshop_path
+  end
+  
+  def after_sign_in_path_for(resource)
+    myshop_path
   end
   
 end

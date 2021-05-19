@@ -15,9 +15,9 @@ class Shops::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   #def edit
+     #super
+   #end
 
   # PUT /resource
   # def update
@@ -52,15 +52,15 @@ class Shops::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
    def after_sign_up_path_for(resource)
-     shops_path
+     myshop_path
    end
 
   # The path used after sign up for inactive accounts.
    def after_inactive_sign_up_path_for(resource)
-     shops_path
+     myshop_path
    end
    
    def after_update_path_for(resource)
-    shops_path
+    myshop_path
    end
 end

@@ -1,3 +1,4 @@
+<div class="container">
 <h1>商品詳細</h1>
 <table class="table table-striped">
     <tr>
@@ -49,4 +50,8 @@
         <th>後味</th>
         <td><%= @item.aftertaste %></td>
     </tr>
+    
 </table>
+
+<%= link_to "戻る", items_path, class: "btn btn-primary" %>
+</div>

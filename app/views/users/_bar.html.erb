@@ -1,0 +1,20 @@
+<div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/homes">Mameya</a>
+          <% if shop_signed_in? %>
+              <%= "" %>
+          <% else %>
+              <%= link_to "オーナー様はこちら", homes_for_shops_path, class: "btn btn-success" %>
+          <% end %>
+            <div>
+             <% if user_signed_in? %>
+                <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-secondary" %>
+             <% else %>
+                <%= link_to "サインイン", new_user_registration_path, class: "btn btn-primary" %>
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
+             <% end %>
+            </div>
+           </div>
+      </nav>
+</div>

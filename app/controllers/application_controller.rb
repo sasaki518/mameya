@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
  protected
  
  def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:account_update, keys: [:shopname, :description, :address, :phonenumber])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:shopname, :description, :address, :phonenumber, :shop_image])
  end
  
  def after_sign_out_path_for(resource)
