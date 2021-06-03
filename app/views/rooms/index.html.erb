@@ -1,0 +1,34 @@
+<h1>メッセージ一覧</h1>
+
+<% if user_signed_in? %>
+<% @shops.each do |shop| %>
+
+<%= shop.shopname %>
+
+<% if @shop_ids.try(:include?, shop.id) %>
+<br>
+<%= link_to "トークを始める",room_path(current_user.rooms.find_by(shop_id: shop.id)) %><br>
+<% else %>
+<%= form_for Room.new do |f| %>
+<%= f.hidden_field :shop_id, :value => shop.id %>
+<%= f.submit %>
+<% end %>
+<% end %>
+<% end %>
+
+<% else %>
+<% @users.each do |user| %>
+
+<%= user.email %>
+
+<% if @user_ids.try(:include, user.id) %>
+<br>
+<%= link_to "トークを始める", room_path(current_shop.rooms.find_by(user_id: user.id)) %><br>
+<% else %>
+<%= form_for Room.new do |f| %>
+<%= f.hidden_field :user_id, :value => user.id %>
+<%= f.submit %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>

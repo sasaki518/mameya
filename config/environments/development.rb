@@ -60,4 +60,17 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.web_console.whitelisted_ips = '61.193.212.44'
+  
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    port: 587,
+    user_name: ENV['WELCOME_MAILER_ADDRESS'],
+    password: ENV['WELCOME_MAILER_PASSWORD'],
+    authentification: 'plain',
+    enable_starttls_auto: true
+  }
+  
+  config.action_mailer.default_url_options={ host: 'https://06978d0fcf134fdda77cc0cbe3ac7b5c.vfs.cloud9.ap-northeast-1.amazonaws.com' }
 end

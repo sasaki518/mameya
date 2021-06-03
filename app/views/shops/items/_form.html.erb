@@ -1,6 +1,6 @@
 <h1>商品<%= type %></h1>
 
-<%= form_with model: item, local: true, mehod: method do |f| %>
+<%= form_with model: [:shops, item], local: true, mehod: method do |f| %>
 
 <div class="form-group">
     <label>商品名</label>
@@ -56,7 +56,7 @@
     <label>後味</label>
     <%= f.select :aftertaste, [[1],[2],[3],[4],[5]],{ include_blank: "選択してください" }, { class: "form-control" } %>
 </div>
-<%= link_to "戻る", items_path, class: "btn btn-secondary" %>
+<%= link_to "戻る", shops_items_path, class: "btn btn-secondary" %>
 <%= f.submit type, class: "btn btn-primary" %>
 
 <%= @item.errors.full_messages %>

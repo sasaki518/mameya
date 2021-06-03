@@ -16,8 +16,7 @@
         <% end %>
     </div>
 </div>
-<%= link_to "新規商品登録", new_item_path, class: "btn btn-success" %>
-<%= link_to "店舗情報", myshop_path, class: "btn btn-dark" %>
+
 <table class="table">
     <tr>
         <th>商品写真</th>
@@ -36,12 +35,6 @@
          <td><%= link_to "商品削除", item_path(item), method: "delete", data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %></td>
          
     </tr>
-        <% if item.roasting == 1 %>
-            <% item.roasting = "深煎り" %>
-        <% elsif item.roasting == 2 %>
-            <% item.roasting = "中煎り" %>
-        <% else %>
-            <% item.roasting = "浅煎り" %>
-        <% end %>
+       
     <% end %>
 </table>
