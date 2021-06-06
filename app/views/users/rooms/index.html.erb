@@ -1,0 +1,10 @@
+<% render 'users/bar' %>
+
+<h1>メッセージ一覧</h1>
+
+<% @shops.each do |s| %>
+
+    <%= s.shopname %>
+    <%= link_to "トークを始める", users_room_path(s) %><br>
+    
+<% end %>

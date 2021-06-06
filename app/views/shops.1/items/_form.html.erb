@@ -1,0 +1,65 @@
+<h1>商品<%= type %></h1>
+
+<%= form_with model: [:shops, item], local: true, mehod: method do |f| %>
+
+<div class="form-group">
+    <label>商品名</label>
+    <%= f.text_field :itemname, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <label>商品説明</label>
+    <%= f.text_area :description, class: "form-control", size: "5x5" %>
+</div>
+
+<div class="form-group">
+    <label>商品写真</label>
+    <%= f.file_field :image, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <label>価格</label>
+    <%= f.number_field :price, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <label>グラム数</label>
+    <%= f.number_field :gram, class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <label>焙煎度</label>
+    <%= f.select :roasting, [["深煎り"],["中煎り"],["浅煎り"]],{ include_blank: "選択してください" }, { class: "form-control" } %>
+</div>
+
+<div class="form-group">
+    <label>苦味</label>
+    <%= f.select :bitterness, [[1],[2],[3],[4],[5]],{ include_blank: "選択してください" }, { class: "form-control" } %>
+</div>
+
+<div class="form-group">
+    <label>酸味</label>
+    <%= f.select :sourness, [[1],[2],[3],[4],[5]],{ include_blank: "選択してください" }, { class: "form-control" } %>
+</div>
+
+<div class="form-group">
+    <label>香り</label>
+    <%= f.select :aroma, [[1],[2],[3],[4],[5]],{ include_blank: "選択してください" }, { class: "form-control" } %>
+</div>
+
+<div class="form-group">
+    <label>コク</label>
+    <%= f.select :body, [[1],[2],[3],[4],[5]],{ include_blank: "選択してください" }, { class: "form-control" } %>
+</div>
+
+<div class="form-group">
+    <label>後味</label>
+    <%= f.select :aftertaste, [[1],[2],[3],[4],[5]],{ include_blank: "選択してください" }, { class: "form-control" } %>
+</div>
+<%= link_to "戻る", shops_items_path, class: "btn btn-secondary" %>
+<%= f.submit type, class: "btn btn-primary" %>
+
+<%= @item.errors.full_messages %>
+
+
+<% end %>

@@ -25,6 +25,15 @@ Rails.application.routes.draw do
       resources :rooms, only: [:index, :show, :create] do
         resources :messages, only: [:create]
     end
+        namespace :shops do
+            resources :rooms, only: [:index, :show, :create]
+            resources :messages, only: [:create]
+        end
+        
+        namespace :users do
+            resources :rooms, only: [:index, :show, :create]
+            resources :messages, only: [:create]
+        end
       resources :shops, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
