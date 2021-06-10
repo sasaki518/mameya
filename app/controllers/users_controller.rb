@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     def show
         @item = Item.find_by(params[:id])
         @shop = Shop.find_by(id: @item.shop_id)
-        @user = User.find(params[:id])
+        
     end
     
     def create

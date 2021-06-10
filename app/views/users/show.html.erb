@@ -10,6 +10,7 @@
         <div class="col-md-4 shop-show-col">
             <h3><%= @shop.shopname %></h3>
             <p><%= @shop.description %></p>
+            <%= link_to "メッセージを送る", users_room_path(@shop.id) %>
         </div>
     </div> 
 </div>

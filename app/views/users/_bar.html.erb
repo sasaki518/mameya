@@ -9,6 +9,7 @@
           <% end %>
             <div>
              <% if user_signed_in? %>
+                <%= link_to "トーク", users_rooms_path, class: "btn btn-warning" %>
                 <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-secondary" %>
              <% else %>
                 <%= link_to "サインイン", new_user_registration_path, class: "btn btn-primary" %>

@@ -1,17 +1,19 @@
 <% render 'shops/bar' %>
-
-<h1>メッセージ</h1>
-<h3><%= @user.email %>のメッセージルーム</h3>
-
-
-<%= form_with model: [@shop, @room, @message] do |f| %>
-<%= f.text_field :text %>
-<%= f.submit "メッセージを送る" %>
-<% end %>
-
-<div class="message-field">
-    <% @messages.each do |message| %>
-        <% rl = message.is_user ? "left" : "right" %>
-        <div class="#{rl}-message"><%= message.text %></div>
+<div class="container">
+    <h1>メッセージ</h1>
+    <h3><%= @user.email %>のメッセージルーム</h3>
+    
+    
+    <%= form_with model: [:shops, @room, @message] do |f| %>
+    <%= f.text_field :text %>
+    <%= f.submit "メッセージを送る" %>
     <% end %>
+    
+    
+    <div class="message-field">
+        <% @messages.each do |m| %>
+            <% rl = m.is_user ? "left" : "right" %>
+            <div class="#{rl}-message"><%= m.text %></div>
+        <% end %>
+    </div>
 </div>

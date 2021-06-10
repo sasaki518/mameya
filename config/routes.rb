@@ -22,17 +22,17 @@ Rails.application.routes.draw do
         get '/users/sign_out' => 'devise/sessions#destroy'
         get '/shops/sign_out' => 'devise/sessions#destroy'
     end
-      resources :rooms, only: [:index, :show, :create] do
-        resources :messages, only: [:create]
-    end
+      
         namespace :shops do
-            resources :rooms, only: [:index, :show, :create]
+            resources :rooms, only: [:index, :show] do
             resources :messages, only: [:create]
+            end
         end
         
         namespace :users do
-            resources :rooms, only: [:index, :show, :create]
+            resources :rooms, only: [:index, :show] do
             resources :messages, only: [:create]
+            end
         end
       resources :shops, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

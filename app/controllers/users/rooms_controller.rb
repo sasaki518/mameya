@@ -3,7 +3,7 @@ class Users::RoomsController < UserController
     
     def index
       @shops = Shop.all
-      @rooms =  current_shop.rooms
+      @rooms =  current_user.rooms
     end
     
     
