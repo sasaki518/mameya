@@ -14,7 +14,7 @@ Rails.application.routes.draw do
    get "/myshop/1", to: "shops#show", as: "myshop"
     
    get "/users", to: "users#index"
-   get "/users/hogehoge", to: "users#show"
+   
 
     devise_for :shops, controllers: {  registrations: 'shops/registrations', sessions: 'shops/sessions' }
     devise_for :users, controllers: { registraions: 'users/registrations', sessions: 'users/sessions',confirmations: 'users/confirmations' }
@@ -34,6 +34,13 @@ Rails.application.routes.draw do
             resources :messages, only: [:create]
             end
         end
+        
+        resources :carts, only: [:show]
+
+          post '/add_item' => 'carts#add_item'
+          post '/update_item' => 'carts#update_item'
+          delete '/delete_item' => 'carts#delete_item'
+                
       resources :shops, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

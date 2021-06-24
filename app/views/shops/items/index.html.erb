@@ -1,4 +1,4 @@
-<%= render 'shops/bar' %>
+
 
 <h1>商品一覧画面</h1>
 
@@ -24,15 +24,15 @@
         <th>価格</th>
         <th>グラム数</th>
     </tr>
-    <% @items.each do |item| %>
+    <% @items.each do |i| %>
      <tr> 
-         <td><%= image_tag item.image,class: "item-images" if item.image.attached? %></td>
-         <td><%= item.itemname %></td>
-         <td><%= item.price %>円</td>
-         <td><%= item.gram %>g</td>
-         <td><%= link_to "商品詳細", item_path(item), class: "btn btn-info" %></td>
-         <td><%= link_to "商品編集", edit_item_path(item), class: "btn btn-warning" %></td>
-         <td><%= link_to "商品削除", item_path(item), method: "delete", data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %></td>
+         <td><%= image_tag i.image,class: "item-images" if i.image.attached? %></td>
+         <td><%= i.itemname %></td>
+         <td><%= i.price %>円</td>
+         <td><%= i.gram %>g</td>
+         <td><%= link_to "商品詳細", shops_item_path(i), class: "btn btn-info" %></td>
+         <td><%= link_to "商品編集", edit_shops_item_path(i), class: "btn btn-warning" %></td>
+         <td><%= link_to "商品削除", shops_item_path(i), method: "delete", data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %></td>
          
     </tr>
        

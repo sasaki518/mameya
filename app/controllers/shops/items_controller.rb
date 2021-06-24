@@ -1,17 +1,21 @@
 class Shops::ItemsController < ApplicationController
     
+    
     before_action :set_item, only: [:show, :edit, :update, :destroy]
     
     def index
         @items = current_shop.items
         @items = @items.where(itemname: params[:itemname]) if params[:itemname].present?
+        render :layout => "shop"
     end
     
     def show
+        
     end
     
    def new
        @item = Item.new
+       render :layout => "shop"
    end
    
    def create
@@ -25,9 +29,11 @@ class Shops::ItemsController < ApplicationController
            flash.now[:alert] = "商品の登録に失敗しました。"
            render :new
        end
+       render :layout => "shop"
    end
    
    def edit
+       render :layout => "shop"
    end
    
    def update
@@ -39,17 +45,21 @@ class Shops::ItemsController < ApplicationController
            flash.now[:alert] = "更新に失敗しました。"
            render :edit
        end
+       render :layout => "shop"
    end
    
    def destroy
        @item.destroy
        flash[:notice] = "削除しました。"
        redirect_to items_path
+       render :layout => "shop"
    end
    
    private
    
    def set_item
-       @item = Item.where(shop_id: session[:shop_id]).find(params[:id])
+       @item = Item.where(shop_id: current_shop.id).find(params[:id])
    end
+   
+  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_014210) do
+ActiveRecord::Schema.define(version: 2021_06_20_051000) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 2021_06_03_014210) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.string "item_id"
+    t.string "integer"
+    t.string "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.string "shop_id"
+    t.string "integer"
+    t.string "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -99,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_014210) do
     t.datetime "confirmed_at"
     t.time "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
     
   belongs_to :shop
+  has_many :cart_item
+  
     
   validates :itemname, presence: true, length: { in: 1..50 }
   validates :description, length: {maximum: 200}

@@ -9,11 +9,10 @@
     <%= f.submit "メッセージを送る" %>
     <% end %>
     
-    
-    <div class="message-field">
-        <% @messages.each do |m| %>
-            <% rl = m.is_user ? "left" : "right" %>
-            <div class="#{rl}-message"><%= m.text %></div>
-        <% end %>
-    </div>
+        <div class="message-field">
+            <% @messages.each do |m| %>
+                <% rl = m.is_user ? "left" : "right" %>
+                    <div class="<%= rl %>-message"><%= m.text %></div>
+            <% end %>
+        </div>
 </div>

@@ -11,7 +11,7 @@
     <div class="message-field">
         <% @messages.each do |m| %>
         <% rl = m.is_user ? "left" : "right" %>
-        <div class="#{rl}-message"><%= m.text %></div>
+        <div class="<%= rl %>-message"><%= m.text %></div>
         <% end %>
     </div>
 </div>
