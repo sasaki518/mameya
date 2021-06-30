@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   
   namespace :shops do 
       resources :items
+      resources :rooms, only: [:index, :show] do
+            resources :messages, only: [:create]
+        end
   end
   
 
@@ -23,24 +26,17 @@ Rails.application.routes.draw do
         get '/shops/sign_out' => 'devise/sessions#destroy'
     end
       
-        namespace :shops do
-            resources :rooms, only: [:index, :show] do
-            resources :messages, only: [:create]
-            end
+   
+    namespace :users do
+        resources :carts, only: [:show] do
+            resources :cart_items
         end
-        
-        namespace :users do
-            resources :rooms, only: [:index, :show] do
+        resources :rooms, only: [:index, :show] do
             resources :messages, only: [:create]
-            end
         end
+    end
         
-        resources :carts, only: [:show]
 
-          post '/add_item' => 'carts#add_item'
-          post '/update_item' => 'carts#update_item'
-          delete '/delete_item' => 'carts#delete_item'
-                
-      resources :shops, only: [:index, :show]
+    resources :shops, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

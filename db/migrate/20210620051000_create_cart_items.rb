@@ -1,11 +1,9 @@
 class CreateCartItems < ActiveRecord::Migration[5.2]
   def change
     create_table :cart_items do |t|
-      t.string :item_id
-      t.string :integer
-      t.string :count
-      t.string :integer
-
+      t.integer :item_id, null: false
+      t.integer :count, null: false
+      t.integer :cart_id
       t.timestamps
     end
   end

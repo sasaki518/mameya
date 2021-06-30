@@ -8,4 +8,9 @@ class ItemsController < ApplicationController
         @shop = Shop.find(1)
         @item = Item.find(1)
     end
+    
+    def show
+        @shop = Shop.find(params[:id])
+        @item = Item.find(params[:id])
+    end
 end

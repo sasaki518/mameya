@@ -34,17 +34,16 @@ ActiveRecord::Schema.define(version: 2021_06_20_051000) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.string "item_id"
-    t.string "integer"
-    t.string "count"
+    t.integer "item_id"
+    t.integer "count"
+    t.integer "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "shop_id"
-    t.string "integer"
-    t.string "user_id"
+    t.integer "shop_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

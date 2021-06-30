@@ -25,7 +25,12 @@
         <p class="card-text"><%= @item.gram %>グラム</p>
         <p class="card-text"><%= @item.price %>円</p>
         <a href="#" class="btn btn-primary">詳細</a>
-        <%= button_to "カートに入れる", add_item_path(item_id: @item.id) %>
+        <%= form_with url: users_cart_cart_items_path(:id, :cart_id), local: true do |f| %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.hidden_field :shop_id, value: @shop.id %>
+            <%= f.number_field :count %>
+            <%= f.submit "カートに追加する" %>
+        <% end %>
       </div>
     </div>
 </div>

@@ -15,6 +15,10 @@ class Users::MessagesController < ApplicationController
         end
     end
     
+    def purchase
+        
+    end
+    
     private
     
     def message_params

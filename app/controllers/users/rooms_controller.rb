@@ -14,7 +14,7 @@ class Users::RoomsController < UserController
       #else  
         #@room = Room.create(shop_id: params[:shop_id], user_id: current_user.id)
       #end
-      @room = Room.find_or_crate_by(shop_id: @shop.id, user_id: current_user.id)
+      @room = Room.find_or_create_by(shop_id: @shop.id, user_id: current_user.id)
       @message = Message.new
       @messages = @room.messages
     end
