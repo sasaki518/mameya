@@ -1,7 +1,7 @@
 <% render 'users/bar'%>
 <div class="container">
     <h1>メッセージ</h1>
-    <h3><%=  @shop.shopname %>のメッセージルーム</h3>
+    <h3><%=  @shop.name %>のメッセージルーム</h3>
     
     <%= form_with model: [:users, @room, @message] do |f| %>
         <%= f.text_field :text %>

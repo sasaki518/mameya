@@ -27,7 +27,7 @@
     <% @items.each do |i| %>
      <tr> 
          <td><%= image_tag i.image,class: "item-images" if i.image.attached? %></td>
-         <td><%= i.itemname %></td>
+         <td><%= i.name %></td>
          <td><%= i.price %>円</td>
          <td><%= i.gram %>g</td>
          <td><%= link_to "商品詳細", shops_item_path(i), class: "btn btn-info" %></td>

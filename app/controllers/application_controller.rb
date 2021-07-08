@@ -16,7 +16,4 @@ class ApplicationController < ActionController::Base
      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name])
  end
  
- def after_sign_out_path_for(resource)
-    homes_path # ログアウト後に遷移するpathを設定
- end
 end

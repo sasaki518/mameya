@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
          
   has_many :rooms
-  #has_one :cart
+  has_many :carts
 end

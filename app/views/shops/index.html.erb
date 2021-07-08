@@ -1,4 +1,21 @@
-<% @shops.each do |shop| %>
 
-<%= link_to shop.shopname, shop_path(shop) %>
-<% end %>
+<div class="container top-container">
+    <div class="row row-1">
+        <div class="col-md-10">
+            <h3>Welcome, to mameya</h3>
+            </div>
+    </div> 
+</div>
+
+<div class="container side-container">
+    <div class="row row-2">
+        <div class="col-md-6 col-1">
+            <% @shop.each do |shop| %>
+            <h3><%=  shop.shopname  %></h3>
+           <%= image_tag shop.shop_image,class: "shop-images" if shop.shop_image.attached? %>
+        </div>
+        
+           <% end %>
+        </div>
+    </div>
+</div>

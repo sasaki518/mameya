@@ -6,6 +6,7 @@ class Shop < ApplicationRecord
          
   has_many :items
   has_many :rooms
+  
          
   validates :shopname, presence: true, length: { in: 1..20 }, if: :shopname
   validates :address, length: { in: 10..50 }, if: :address

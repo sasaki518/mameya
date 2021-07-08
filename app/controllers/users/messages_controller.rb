@@ -1,4 +1,4 @@
-class Users::MessagesController < ApplicationController
+class Users::MessagesController < UserController
     
     
     
@@ -13,10 +13,6 @@ class Users::MessagesController < ApplicationController
             flash.now[:alert] = "送信に失敗しました"
             redirect_to users_room_path(@room)
         end
-    end
-    
-    def purchase
-        
     end
     
     private

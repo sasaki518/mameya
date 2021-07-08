@@ -5,7 +5,7 @@
     
     <% @shops.each do |s| %>
     
-        <%= s.shopname %>
+        <%= s.name %>
         <%= link_to "トークを始める", users_room_path(s) %><br>
         
     <% end %>

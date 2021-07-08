@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>ショッピングカート</h1>
+    <% @carts.each do |c| %>
+        <h2><%= c.shop.name %>のショッピングカート</h2>
+        <table class="table">
+            <tr>
+                <th>商品名</th>
+                <th>価格</th>
+                <th>グラム数</th>
+                <th>商品数</th>
+            </tr>
+            
+            <% total = 0 %>
+            <% payment = 0 %>
+            <% c.cart_items.each do |ci| %>
+            <tr> 
+                <td><%= ci.item.name %></td>
+                <td><%= ci.item.price %>円</td>
+                <td><%= ci.item.gram %>g</td>
+                <td><%= ci.count %></td>
+                <td><%= link_to "カートから削除する", users_cart_item_path(ci), method: "delete", data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
+            </tr>
+            <% total += ci.count %>
+            <% payment += ci.item.price * total %>
+            <% end %>
+            <tr>
+                <td><td>商品合計</td></td>
+                <td><td><%= total %></td></td>
+            </tr>
+            <tr>
+                <td><td>価格合計</td></td>
+                <td><td><%= payment %>円</td></td>
+            </tr>
+            </table>
+       
+    <% end %>
+            <%= link_to "買い物を続ける", users_shops_path, class: "btn btn-primary" %>
+</div>

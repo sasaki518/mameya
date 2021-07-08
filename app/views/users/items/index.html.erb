@@ -1,0 +1,28 @@
+<div class="container">
+<h1><%= @shop.name %></h1> 
+<td><%= link_to "メッセージを送る", users_room_path(@shop.id) %></td>
+<table class="table table-striped">
+    <tr>
+        <th>商品名</th>
+        <th>グラム数</th>
+        <th>価格</th>
+        <th> </th>
+        <th>商品数</th>
+        <th> </th>
+    </tr>
+    <% @items.each do |i| %>
+        <%= form_with url: users_cart_items_path, local: true do |f| %>
+            <tr>
+                <td><%= i.name %></td>
+                <td><%= i.gram %></td>
+                <td><%= i.price %></td>
+                <td><%= link_to "詳細", users_shop_item_path(@shop.id, i), class: "btn btn-info" %></td>
+                <%= f.hidden_field :item_id, value: i.id %>
+                <%= f.hidden_field :shop_id, value: @shop.id %>
+                <td><%= f.number_field :count %></td>
+                <td><%= f.submit "カートに追加する" %></td>
+            </tr>
+        <% end %>
+    <% end %>
+</table>
+</div>
