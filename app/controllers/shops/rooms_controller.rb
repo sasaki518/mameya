@@ -2,9 +2,7 @@ class Shops::RoomsController < ShopController
     
     
     def index
-      
-          @rooms = current_shop.rooms
-          @users = User.all
+      @rooms = current_shop.rooms
     end
     
     

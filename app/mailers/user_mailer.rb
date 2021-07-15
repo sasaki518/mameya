@@ -10,5 +10,16 @@ class UserMailer < ApplicationMailer
                format.text
            end
     end
-           
+    
+    def send_message_to_user(user)
+        @user = user
+        mail(
+           subject: "ショップからメッセージが届きました。",
+           to: @user.email
+           ) do |format|
+               format.text
+           end
+    end
+    
+   
 end

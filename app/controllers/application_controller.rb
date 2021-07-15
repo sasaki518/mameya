@@ -3,11 +3,6 @@ class ApplicationController < ActionController::Base
  
  before_action :configure_permitted_parameters, if: :devise_controller?
  
- def current_cart
-    if session[:cart_id]
-      @cart = Cart.find(session[:cart_id])
-    end
- end
  
  protected
  

@@ -21,7 +21,7 @@
                 <td><%= link_to "カートから削除する", users_cart_item_path(ci), method: "delete", data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
             </tr>
             <% total += ci.count %>
-            <% payment += ci.item.price * total %>
+            <% payment += ci.item.price * total * 1.08 %>
             <% end %>
             <tr>
                 <td><td>商品合計</td></td>
@@ -32,7 +32,9 @@
                 <td><td><%= payment %>円</td></td>
             </tr>
             </table>
-       
+           <%= form_with url: users_cart_purchases_path(c.id), local: true do |f| %>
+                <%= f.submit "購入する" %>
+           <% end %>
     <% end %>
             <%= link_to "買い物を続ける", users_shops_path, class: "btn btn-primary" %>
 </div>
