@@ -7,8 +7,8 @@ class Shops::RoomsController < ShopController
     
     
     def show
-      @user = User.find(params[:id])
       @room = current_shop.rooms.find(params[:id])
+      @user = @room.user
       @message = Message.new
       @messages = @room.messages
       

@@ -7,7 +7,7 @@ class Users::CartItemsController < UserController
         cart_item = cart.cart_items.build(item_id: params[:item_id], count: params[:count])
         cart_item.cart_id = cart.id
         #cart_item.item.where(itemname: params[:itemname], gram: params[:gram], price: params[:price])
-        if cart_item.save!
+        if cart_item.save
             flash[:notice] = "カートに商品を追加しました。"
             redirect_to users_carts_path
         else

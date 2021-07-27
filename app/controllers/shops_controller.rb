@@ -1,7 +1,8 @@
 class ShopsController < ApplicationController
     
     
-    def index
-        @shop = Shop.find(shop_id: params[:shop_id])
+    def show
+        @shop = current_shop
+        @items = current_shop.items
     end
 end

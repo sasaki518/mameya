@@ -8,9 +8,9 @@ class Shop < ApplicationRecord
   has_many :rooms
   
          
-  validates :shopname, presence: true, length: { in: 1..20 }, if: :shopname
-  validates :address, length: { in: 10..50 }, if: :address
-  validates :phonenumber, length: { in: 5..15 }, numericality: { only_integer:true }, if: :phonenumber
+  validates :name, presence: true, length: { maximum: 20 }, if: :name
+  validates :address, length: { maximum: 50 }, if: :address
+  validates :phonenumber, numericality: { maximum: 11, only_integer: true }, if: :phonenumber
   validates :description, length: {maximum: 200 }, if: :description
   
   has_one_attached :shop_image

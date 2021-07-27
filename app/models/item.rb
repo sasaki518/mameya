@@ -5,11 +5,11 @@ class Item < ApplicationRecord
   
   
     
-  validates :itemname, presence: true, length: { in: 1..50 }
+  validates :name, presence: true, length: { maximum: 50 }
   validates :description, length: {maximum: 200}
-  validates :price, presence: true, numericality: { in: 1..5, only_integer: true}
-  validates :gram, presence: true, numericality: { in: 1..500, only_integer: true}
-  validates :roasting, presence: true, length: { is: 3 }
+  validates :price, presence: true, numericality: { maximum: 10000, only_integer: true}
+  validates :gram, presence: true, numericality: { maximum: 2000, only_integer: true}
+  validates :roasting, presence: true, numericality: { in: 1..5, only_integer: true}
   validates :sourness, presence: true, numericality: { in: 1..5, only_integer: true}
   validates :bitterness, presence: true, numericality: { in: 1..5, only_integer: true}
   validates :aroma, presence: true, numericality: { in: 1..5, only_integer: true}

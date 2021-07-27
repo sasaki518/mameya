@@ -1,4 +1,4 @@
-class Shops::ItemsController < ApplicationController
+class Shops::ItemsController < ShopController
     
     
     before_action :set_item, only: [:show, :edit, :update, :destroy]

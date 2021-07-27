@@ -5,14 +5,15 @@ class UserMailer < ApplicationMailer
        @user = user
        mail(
            subject: "会員登録が完了しました。",
-           to: "送信先のメールアドレス"
+           to: @user.email
            ) do |format|
                format.text
            end
     end
     
-    def send_message_to_user(user)
+    def send_message_to_user(user, shop)
         @user = user
+        @shop = shop
         mail(
            subject: "ショップからメッセージが届きました。",
            to: @user.email
@@ -21,5 +22,14 @@ class UserMailer < ApplicationMailer
            end
     end
     
-   
+    def send_purchase_confirmation_to_user(user, shop)
+        @user = user
+        @shop = shop
+        mail(
+           subject: "購入が完了しました。",
+           to: @user.email
+           ) do |format|
+               format.text
+           end
+    end
 end
