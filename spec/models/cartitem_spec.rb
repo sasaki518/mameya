@@ -7,7 +7,7 @@ RSpec.describe CartItem, type: :model do
  
   describe "validations" do
         describe "#item_id" do
-            it { should validate_uniqueness_of(:item_id) }
+            it { should validate_uniqueness_of(:item_id).scoped_to (:cart_id) }
         end
         
         describe "#count" do
