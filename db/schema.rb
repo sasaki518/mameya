@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2021_08_01_053703) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "count"
+    t.integer "item_id", null: false
+    t.integer "count", null: false
     t.integer "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,9 +73,12 @@ ActiveRecord::Schema.define(version: 2021_08_01_053703) do
   create_table "messages", force: :cascade do |t|
     t.text "text"
     t.integer "room_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_user"
+    t.boolean "is_user", default: false, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|

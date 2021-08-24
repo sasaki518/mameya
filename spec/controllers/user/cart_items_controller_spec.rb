@@ -8,7 +8,6 @@ RSpec.describe Users::CartItemsController, type: :request do
         
         before do
             sign_in user
-            p user
         end
              
         
