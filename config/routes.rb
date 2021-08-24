@@ -30,7 +30,7 @@ Rails.application.routes.draw do
         get '/shops/sign_out' => 'devise/sessions#destroy'
     end
     
-    get "myshop", to: "shops#show"
+
     namespace :shops do 
         resources :rooms, only: [:index, :show] do
             resources :messages, only: [:create]

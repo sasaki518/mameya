@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Shops::RoomsController, type: :request do
-    let(:room) {create(:room)}
+    let(:shop) {create(:shop)}
+    let!(:user) {create(:user)}
     
     context "not auth" do
         describe "index" do
@@ -14,7 +15,7 @@ RSpec.describe Shops::RoomsController, type: :request do
     
     context "authenticated" do
         before do
-            sign_in room
+            sign_in shop
         end
         
         describe "#index" do
@@ -26,7 +27,7 @@ RSpec.describe Shops::RoomsController, type: :request do
             end
             
             context "rooms exist" do
-                let!(:rooms){create_list(:rooms, 3, shop_id: shop.id, user_id: user.id)}
+                let!(:rooms){create_list(:room, 3, shop_id: shop.id, user_id: user.id)}
                 it "response success" do
                     get "/shops/rooms"
                     expect(response.status).to eq(200)
@@ -43,23 +44,23 @@ RSpec.describe Shops::RoomsController, type: :request do
             
             describe "#show" do
                 context "target exist" do
-                    let!(:room){create(:room)}
+                    let!(:room){create(:room, user_id: user.id, shop_id: shop.id)}
                     
                     it "response success" do
                         get "/shops/rooms/#{room.id}"
-                        expect (response.status).to eq(200)
+                        expect(response.status).to eq(200)
                     end
                 
                     it "render room" do
                         get "/shops/rooms/#{room.id}"
-                        expect(response.body). to include room.user_id
+                        expect(response.body). to include room.user.name
                     end
                 end
             
                 context "target un exist" do
                     it "response success" do
                         expect{
-                            get "shops/rooms/0"
+                            get "/shops/rooms/0"
                         }.to raise_error(ActiveRecord::RecordNotFound)
                     end
         end

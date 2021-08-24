@@ -1,8 +1,7 @@
 FactoryBot.define do
-    factory :messsage, class: Message do
+    factory :message, class: Message do
         
-        sequence(:text)
-        sequence(:room_id)
-        sequence(:is_user)
+        sequence(:text){|m| "message#{m}"}
+        sequence(:is_user){ true }
     end
 end

@@ -1,8 +1,7 @@
-class Users::ShopsController < ApplicationController
+class Users::ShopsController < UserController
     
     def index
         @shops = Shop.all
-        render :layout => "user"
     end
     
     def show

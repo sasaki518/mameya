@@ -4,7 +4,7 @@
           <a class="navbar-brand" href="/shops">Mameya</a>
             <div>
              <% if shop_signed_in? %>
-                <%= link_to "店舗詳細", myshop_path(@shop), class: "btn btn-primary" %>
+                <%= link_to "店舗詳細", users_shop_items_path(current_shop), class: "btn btn-primary" %>
                 <%= link_to "店舗情報編集",edit_shop_registration_path, class: "btn btn-primary" %>
                 <%= link_to "新規商品登録", new_shops_item_path, class: "btn btn-success" %>
                 <%= link_to "トーク", shops_rooms_path, class: "btn btn-warning" %>

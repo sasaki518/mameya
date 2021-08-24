@@ -14,7 +14,7 @@ class Users::MessagesController < UserController
             ShopMailer.send_message_to_shop(@shop).deliver
         else
             flash.now[:alert] = "送信に失敗しました"
-            redirect_to users_room_path(@room)
+            render "users/rooms/show"
         end
     end
     

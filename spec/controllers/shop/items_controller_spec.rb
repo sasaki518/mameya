@@ -44,16 +44,16 @@ RSpec.describe Shops::ItemsController, type: :request do
     
     describe "#show" do
         context "target exist" do
-            let!(:item){create(:item)}
+            let!(:item){create(:item, shop_id: shop.id)}
             
             it "response success" do
                 get "/shops/items/#{item.id}"
-                expect (response.status).to eq(200)
+                expect(response.status).to eq(200)
             end
             
             it "render item" do
                 get "/shops/items/#{item.id}"
-                expect(response.body). to include item.name
+                expect(response.body).to include item.name
             end
         end
         
@@ -76,23 +76,23 @@ RSpec.describe Shops::ItemsController, type: :request do
             
             it "render new" do
                 post "/shops/items", params: params
-                expect(response.body).to include "New Item"
+                expect(response.body).to include "商品登録"
             end
             
             it "render error" do
                 post "/shops/items", params: params
-                expect(response.body). to include "Missing create"
+                expect(response.body).to include "商品の登録に失敗しました"
             end
         end
         
         context "登録成功" do
             let(:item){build(:item)}
-            let(:params) { {item: {name: item.name, description: item.description}} }
+            let(:params) { {item: item.attributes}}
             let(:created_item) { Item.last }
             
             it "response redirect" do
                 post "/shops/items", params: params
-                expect(response.status). to redirect_to shops_item_path(created_item.id)
+                expect(response.status).to redirect_to shops_items_path
             end
             
             it "response redirect" do
@@ -105,7 +105,7 @@ RSpec.describe Shops::ItemsController, type: :request do
     
     describe "#edit" do
         context "item exist" do
-            let!(:item){create(:item)}
+            let!(:item){create(:item, shop_id: shop.id)}
             
             it "response success" do
                 get "/shops/items/#{item.id}/edit"
@@ -129,7 +129,7 @@ RSpec.describe Shops::ItemsController, type: :request do
     
     describe "#update" do
         context "更新失敗" do
-        let(:item) {create(:item)}
+        let(:item) {create(:item, shop_id: shop.id)}
         let(:params) { {item: {name: "", description: item.description}} }
 
         it "response success" do
@@ -139,17 +139,17 @@ RSpec.describe Shops::ItemsController, type: :request do
 
         it "render edit" do
           patch "/shops/items/#{item.id}", params: params
-          expect(response.body).to include "Editing Item"
+          expect(response.body).to include "更新に失敗しました"
         end
       end
 
       context "更新成功" do
-        let(:item) {create(:item)}
+        let(:item) {create(:item, shop_id: shop.id)}
         let(:params) { {item: {name: item.name + " updated", description: item.description}} }
 
         it "response redirect" do
           patch "/shops/items/#{item.id}", params: params
-          expect(response.status).to redirect_to shops_item_path(item.id)
+          expect(response.status).to redirect_to shops_items_path
         end
 
       end
@@ -157,7 +157,7 @@ RSpec.describe Shops::ItemsController, type: :request do
     
     describe "#destroy" do
       context "削除成功" do
-        let!(:item) {create(:item)}
+        let!(:item) {create(:item, shop_id: shop.id)}
         it "delete success" do
           expect {
             delete "/shops/items/#{item.id}"
@@ -165,7 +165,7 @@ RSpec.describe Shops::ItemsController, type: :request do
         end
 
         it "response redirect" do
-          delete "shops/items/#{item.id}"
+          delete "/shops/items/#{item.id}"
           expect(response.status).to redirect_to shops_items_path
         end
       end

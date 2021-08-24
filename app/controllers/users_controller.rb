@@ -9,7 +9,7 @@ class UsersController < ApplicationController
             redirect_to homes_users_path
         else
             flash.now[:alert] = "サインアップに失敗しました。"
-            render template: "users/registrations/new"
+            render  "users/registrations/new"
         end
     end
 end
